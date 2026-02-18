@@ -45,6 +45,72 @@
             margin-bottom: 2.5rem;
         }
 
+        .mission {
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #9da5b0;
+            font-style: italic;
+        }
+
+        .pillars {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pillar-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 0.7rem 1.25rem;
+            background: transparent;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            color: #e6edf3;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .pillar-btn:hover {
+            border-color: #58a6ff;
+            background-color: rgba(88, 166, 255, 0.08);
+        }
+
+        .pillar-btn.active {
+            border-color: #58a6ff;
+            background-color: rgba(88, 166, 255, 0.12);
+        }
+
+        .pillar-content {
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #9da5b0;
+            text-align: left;
+            display: none;
+        }
+
+        .pillar-content.visible {
+            display: block;
+        }
+
+        .pillar-content h3 {
+            color: #e6edf3;
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
         .links {
             display: flex;
             gap: 1.5rem;
@@ -82,6 +148,33 @@
         <h1 class="name">Ian</h1>
         <p class="handle">@Brickmii</p>
         <p class="role">Systems Architecture &amp; Implementation</p>
+        <p class="mission">
+            Motion goes where motion knows, and information grows when information flows.
+            I believe in the motion of love — and in the power of what grows from it.
+            This space is dedicated to sharing, connecting, and spreading that love forward.
+            Your support keeps the motion going and the information flowing.
+        </p>
+        <div class="pillars">
+            <button class="pillar-btn" onclick="togglePillar('problem')">The Problem</button>
+            <button class="pillar-btn" onclick="togglePillar('idea')">The Idea</button>
+            <button class="pillar-btn" onclick="togglePillar('goal')">The Goal</button>
+        </div>
+
+        <div id="problem" class="pillar-content">
+            <h3>The Problem</h3>
+            <p>We find ourselves indebted to a life we didn't ask for, chasing dreams that aren't ours, living in a way that's unsatisfying — let alone fulfilling. It's a rat race — and the race isn't even about speed or longevity, it's about who accumulates the most money. How does this make sense? We subscribe to passion then let it take a backseat to economics when we know in our hearts, we are not happy. This is a lie. Money is a lie disguised as a compromise. You cannot replace time with currency.</p>
+        </div>
+
+        <div id="idea" class="pillar-content">
+            <h3>The Idea</h3>
+            <p>How many times has someone told you they dream of being rich? I've had that dream too. But recently I realized — I'd rather create freely than manage wealth. I still have to pay bills! So the idea is this — produce output, link the work, give things to the world, and let people support it if it moves them. Let the motion grow!</p>
+        </div>
+
+        <div id="goal" class="pillar-content">
+            <h3>The Goal</h3>
+            <p>My goal is to spread the idea that money isn't the end all, and people matter more than anything because we choose them to matter. We have that power and it is ours to command. But power is never given — it must be taken or earned through entropy. So I am reducing what money means, increasing what people and experiences mean, and changing my life to reflect that.</p>
+        </div>
+
         <div class="links">
             <a href="https://github.com/Brickmii" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -97,5 +190,21 @@
             </a>
         </div>
     </div>
+    <script>
+        function togglePillar(id) {
+            var content = document.getElementById(id);
+            var btns = document.querySelectorAll('.pillar-btn');
+            var sections = document.querySelectorAll('.pillar-content');
+            var isOpen = content.classList.contains('visible');
+
+            sections.forEach(function(s) { s.classList.remove('visible'); });
+            btns.forEach(function(b) { b.classList.remove('active'); });
+
+            if (!isOpen) {
+                content.classList.add('visible');
+                event.currentTarget.classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
